@@ -1,0 +1,8 @@
+# Ignore the virtual environment directory
+students/
+
+# Ignore compiled Python files
+__pycache__/
+
+# Ignore the .env file
+.env
