@@ -1,97 +1,85 @@
 /* Style for header/navigation */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+    background-color: #333; /* Background color for the header */
+    color: #fff; /* Text color for the header */
+    padding: 10px; /* Padding for the header */
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* Remove bullet points from the list */
+    padding: 0; /* Remove padding for the unordered list */
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 10px;
+    display: inline; /* Display list items horizontally */
+    margin-right: 10px; /* Right margin for list items */
 }
 
 nav a {
-    text-decoration: none;
-    color: #fff;
+    text-decoration: none; /* Remove underlines from anchor links */
+    color: #fff; /* Text color for anchor links */
 }
 
 /* Style for login form */
 main {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    margin: 20px; /* Margin around the main content */
+    padding: 20px; /* Padding for the main content */
+    border: 1px solid #ddd; /* Border for the main content */
+    background-color: #f9f9f9; /* Background color for the main content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for the main content */
+    text-align: center; /* Center-align text in the main content */
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 24px; /* Font size for headings */
+    margin-bottom: 20px; /* Bottom margin for headings */
 }
 
 form {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 400px; /* Maximum width for the form */
+    margin: 0 auto; /* Center-align the form horizontally */
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    display: block; /* Display labels as block elements */
+    margin-bottom: 5px; /* Bottom margin for labels */
+    font-weight: bold; /* Apply bold font weight to labels */
 }
 
 input[type="text"],
 input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 100%; /* Set input fields to 100% width */
+    padding: 10px; /* Padding for input fields */
+    margin-bottom: 10px; /* Bottom margin for input fields */
+    border: 1px solid #ccc; /* Border for input fields */
+    border-radius: 4px; /* Rounded corners for input fields */
 }
 
 button[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #333; /* Background color for submit button */
+    color: #fff; /* Text color for submit button */
+    padding: 10px 20px; /* Padding for submit button */
+    border: none; /* Remove border for submit button */
+    border-radius: 4px; /* Rounded corners for submit button */
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 button[type="submit"]:hover {
-    background-color: #555;
+    background-color: #555; /* Background color change on hover */
 }
 
 /* Style for flash messages */
 ul.flash-messages {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    color: #fff;
+    list-style-type: none; /* Remove bullet points from flash messages list */
+    padding: 0; /* Remove padding for flash messages list */
+    margin: 0; /* Remove margin for flash messages list */
+    color: #fff; /* Text color for flash messages */
 }
 
 ul.flash-messages li {
-    background-color: #333;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background-color: #333; /* Background color for flash messages */
+    padding: 10px; /* Padding for flash messages */
+    margin-bottom: 10px; /* Bottom margin for flash messages */
+    border-radius: 4px; /* Rounded corners for flash messages */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Box shadow for flash messages */
 }
-
-
-a {
-    text-decoration: none;
-    color: #007BFF;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: blue;
-}
-

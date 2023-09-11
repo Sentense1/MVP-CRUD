@@ -1,81 +1,69 @@
 /* Style for header/navigation */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+    background-color: #333; /* Set the background color of the header to dark gray */
+    color: #fff; /* Set the text color of the header to white */
+    padding: 10px; /* Add padding to the header */
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* Remove list bullets from the unordered list */
+    padding: 0; /* Remove padding from the unordered list */
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 10px;
+    display: inline; /* Display list items horizontally */
+    margin-right: 10px; /* Add right margin to list items for spacing */
 }
 
 nav a {
-    text-decoration: none;
-    color: #fff;
+    text-decoration: none; /* Remove underlines from anchor links */
+    color: #fff; /* Set the text color of anchor links to white */
 }
 
 /* Style for form */
 main {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px; /* Add margin around the main content */
+    padding: 20px; /* Add padding to the main content */
+    border: 1px solid #ddd; /* Add a 1px solid border with light gray color to the main content */
+    background-color: #f9f9f9; /* Set the background color of the main content to light gray */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect to the main content */
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 24px; /* Set the font size for h1 headings */
+    margin-bottom: 20px; /* Add margin at the bottom of h1 headings */
 }
 
 form {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 400px; /* Set the maximum width of the form */
+    margin: 0 auto; /* Center the form horizontally */
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    display: block; /* Display labels as blocks (one below the other) */
+    margin-bottom: 5px; /* Add margin at the bottom of labels */
+    font-weight: bold; /* Set labels to bold text */
 }
 
 input[type="text"],
 input[type="tel"],
 input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 100%; /* Make text input fields take up the full width of their container */
+    padding: 10px; /* Add padding to input fields */
+    margin-bottom: 10px; /* Add margin at the bottom of input fields */
+    border: 1px solid #ccc; /* Add a 1px solid border with light gray color to input fields */
+    border-radius: 4px; /* Add rounded corners to input fields */
 }
 
 input[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #333; /* Set the background color of the submit button to dark gray */
+    color: #fff; /* Set the text color of the submit button to white */
+    padding: 10px 20px; /* Add padding to the submit button */
+    border: none; /* Remove the button border */
+    border-radius: 4px; /* Add rounded corners to the submit button */
+    cursor: pointer; /* Change cursor to a pointer on hover */
 }
 
 input[type="submit"]:hover {
-    background-color: #555;
+    background-color: #555; /* Darken the submit button background color on hover */
 }
-
-
-a {
-    text-decoration: none;
-    color: #007BFF;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: blue;
-}
-

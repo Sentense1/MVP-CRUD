@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css' )}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css' )}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_student_style_style.css' )}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css' )}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about_style.css' )}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_style.css' )}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='info_style.css' )}}">
     <title>Landing page</title>
 </head>
 <body>
@@ -13,9 +18,8 @@
     <header>
         <nav>
             <ul>
-                
+                <li><a href="/info">info</a></li>
                     <li><a href="/login">Login</a></li>
-                    <li><a href="/home">home</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
         </nav>
@@ -23,7 +27,34 @@
     <main>
         <h1>Welcome to the Student Information App</h1>
         <p>This app allows authorized admins to manage student information.</p>
+    
+        
+       
+        <section id="feature" class="dark-theme flex-layout grid-layout">
+            
+            
+            <div class="home-feature feature">
+                <h2>Home</h2>
+                <img src="../static/images/home.png" alt="image">
+                <p>Log in to our platform to Add, Edit, or Delete Students' Information for Admins only..</p>
+            </div>
+
+            <div class="stud-info-feature feature">
+                <h2>Student Information</h2>
+                <img src="../static/images/stud-info.png" alt="image 3">
+                <p>Visit this page to view students' information.</p>
+            </div>
+
+            
+            <div class="about-feature feature">
+                <h2>About Us</h2>
+                <img src="../static/images/about.png" alt="image 1">
+                <p>Information about the owner of the App.</p>
+            </div>
+        </section>
+    
     </main>
     {% endblock %}
+    
 </body>
 </html>

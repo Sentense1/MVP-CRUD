@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Welcome</a></li>
+            <li><a href="/info">info</a></li>
+            {% if not current_user.is_authenticated %}
+            <li><a href="/login">Login</a></li>
+            {% else %}
+            <li><a href="/info">Logout</a></li>
+            {% endif %}
+            
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    
+    <h1>Student Information</h1>
+
+    <table>
+        <tr>
+            
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            
+        </tr>
+        {% for student in students %}
+        
+            <tr>
+                <td>{{ student.ID }}</td>
+                <td>{{ student.Name }}</td>
+                <td>{{ student.PhoneNumber }}</td>
+                <td>{{ student.Email }}</td>
+                
+                
+            </tr>
+        {% endfor %}
+    </table>
+
+</main>
+{% endblock %}

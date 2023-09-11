@@ -5,11 +5,8 @@
     <nav>
         <ul>
             <li><a href="/">Welcome</a></li>
-            {% if not current_user.is_authenticated %}
-                <li><a href="/login">Login</a></li>
-            {% else %}
-                <li><a href="/home">Logout</a></li>  <!-- Add a logout link -->
-            {% endif %}
+            <li><a href="/info">info</a></li>
+            <li><a href="/info">Logout</a></li>
             <li><a href="/about">About</a></li>
         </ul>
     </nav>
@@ -20,7 +17,7 @@
         {% if messages %}
             <div class="flash-message flash-success">
                 {% for message in messages %}
-                        <p>{{ message }}</p>
+                        <p>{{ message  }}</p>
                 {% endfor %}
             </div>
         {% endif %}
@@ -28,16 +25,11 @@
     
     
     <h1>Student Information</h1>
-    <!--added for debugging
+    
         
-        <p>Authenticated: {{ current_user.is_authenticated }}</p> -->
-
-    {% if not current_user.is_authenticated %}
-        {{ pass }}
-    {% else %}
-        <li><a href="/add_student">Add Student</a></li>
-        <!-- Add add student logic here -->
-    {% endif %}
+        
+        <li><a href="/add_student" class="add-student">Add Student</a></li>
+        
 
     <table>
         <tr>
@@ -46,9 +38,9 @@
             <th>Name</th>
             <th>Phone Number</th>
             <th>Email</th>
-            {% if current_user.is_authenticated %}
+            
                 <th>Actions</th>
-            {% endif %}
+            
         </tr>
         {% for student in students %}
         
@@ -57,7 +49,8 @@
                 <td>{{ student.Name }}</td>
                 <td>{{ student.PhoneNumber }}</td>
                 <td>{{ student.Email }}</td>
-                {% if current_user.is_authenticated %}
+                
+                
                 <td>
                     <form method="POST" action="{{ url_for('edit', student_id=student['ID']) }}" style="display: inline-block;">
                         <!-- Add form fields for editing here if needed -->
@@ -68,7 +61,8 @@
                         <button type="submit" class="delete-button">Delete</button>
                     </form>
                 </td>
-                {% endif %}
+                
+                
             </tr>
         {% endfor %}
     </table>
