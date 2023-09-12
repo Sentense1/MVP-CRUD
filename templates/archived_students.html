@@ -1,0 +1,36 @@
+{% extends 'index.html'%}
+
+{% block content %}
+
+<header>
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/info">Student Information</a></li>
+			<li><a href="/about">About Us</a></li>
+		</ul>
+	</nav>
+</header>
+
+
+	<main>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Phone Number</th>
+				<th>Emial</th>
+			</tr>
+
+			<tr>
+				{% for archived_student in archived_students %}
+					<th>{{ archived_student.id }}</th>
+					<th>{{ archived_student.name }}</th>
+					<th>{{ archived_student.phoneNumber }}</th>
+					<th>{{ archived_student.email }}</th>
+				{% endfor %}
+			</tr>
+		</table>
+	</main>
+
+{% endblock %}

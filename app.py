@@ -310,8 +310,12 @@ def delete(student_id):
         student_data = cursor.fetchone()
         # Close the database connection to release resources.
         if student_data:
+	    # Add the student data about to be deleted to archived_students page
+	    insert_query = "INSERT INTO archived_students (name, phoneNumber, email) VALUES (%s, %s, %s)"
+	    # complete the insertion into archived_students
+	    cursor.execute("student_data['Name'], student_data['phoneNumber'], student_data['Email']")
 
-            # Delete the student record from the 'students' table
+            # Now delete the student record from the 'students' table
             delete_query = "DELETE FROM students WHERE ID = %s"
             # Execute the DELETE query
             cursor.execute(delete_query, (student_id,))
