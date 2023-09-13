@@ -12,15 +12,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='edit_style.css' )}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='info_style.css' )}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='archived_students_style.css') }}">
-    <title>Landing page</title>
+    <title>
+        {% block title %}
+            Landing page
+        {% endblock %}
+    </title>
 </head>
 <body>
     {% block content %}
     <header>
         <nav>
             <ul>
-                <li><a href="/info">info</a></li>
-		<li><a href="/archived_students>Archived Students</a></li>"
+                <li><a href="/info">Student Information</a></li>
+                <li><a href="/archived_students">Archived Students</a></li>
                     <li><a href="/login">Login</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
@@ -47,6 +51,13 @@
                 <p>Visit this page to view students' information.</p>
             </div>
 
+            <div class="archived-students-feature feature">
+                <h2>Archived Students</h2>
+                <img src="../static/images/archived.png" alt="image">
+                <p>View this page to access Archived Students</p>
+                <p>These are Students whom are no longer with us</p>
+                <p>Either switched schools or expelled</p>
+            </div>
             
             <div class="about-feature feature">
                 <h2>About Us</h2>

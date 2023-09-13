@@ -1,12 +1,16 @@
 {% extends 'index.html' %}
+
+{% block title %}
+    info page
+{% endblock %}
+
 {% block content %}
 
 <header>
     <nav>
         <ul>
             <li><a href="/">Welcome</a></li>
-            <li><a href="/info">info</a></li>
-	    <li><a href="/archived_students">Archived Students</a></li>
+            <li><a href="/archived_students">Archived Students</a></li>
             {% if not current_user.is_authenticated %}
             <li><a href="/login">Login</a></li>
             {% else %}

@@ -1,36 +1,51 @@
-{% extends 'index.html'%}
+{% extends 'index.html' %}
+
+{% block title %}
+    Archived Students
+{% endblock %}
 
 {% block content %}
-
 <header>
-	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/info">Student Information</a></li>
-			<li><a href="/about">About Us</a></li>
-		</ul>
-	</nav>
+    <nav>
+        <ul>
+            <li><a href="/">Welcome</a></li>
+            <li><a href="/info">Student Information</a></li>
+            <li><a href="/about">About Us</a></li>
+        </ul>
+    </nav>
 </header>
 
+<main>
+    <h1>Archived Students</h1>
 
-	<main>
-		<table>
-			<tr>
-				<th>ID</th>
-				<th>Name</th>
-				<th>Phone Number</th>
-				<th>Emial</th>
-			</tr>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+        </tr>
 
-			<tr>
-				{% for archived_student in archived_students %}
-					<th>{{ archived_student.id }}</th>
-					<th>{{ archived_student.name }}</th>
-					<th>{{ archived_student.phoneNumber }}</th>
-					<th>{{ archived_student.email }}</th>
-				{% endfor %}
-			</tr>
-		</table>
-	</main>
+        {% for archived_student in archived_students %}
+            <tr>
+                <th>{{ archived_student['id'] }}</th>
+                <th>{{ archived_student['name'] }}</th>
+                <th>{{ archived_student['phoneNumber'] }}</th>
+                <th>{{ archived_student['email'] }}</th>
+            </tr>
+        {% endfor %}
+    </table>
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <p> {{ message }} </p>
+                {% endfor %}
+            </div>
+            
+        {% endif %}
+    {% endwith %}
+
+</main>
 {% endblock %}
