@@ -1,43 +1,45 @@
-""" necessary modules"""
-# import logging
+""" Import necessary modules."""
+
+import os
 from flask_login import UserMixin
 import mysql.connector
 from mysql.connector import Error
 from werkzeug.security import check_password_hash
-from decouple import config
+from dotenv import load_dotenv
 
-# Configure logging
-# logging.basicConfig(filename='app.log', level=logging.ERROR,
-#                    format='%(asctime)s - %(levelname)s - %(message)s')
+# Load environment variables from .env file
+load_dotenv()
 
 
 # Define the User class
 class User(UserMixin):
-    """User database class"""
+    """User class for managing user objects."""
 
     def __init__(self, user_id):
+        """Initialize the User object."""
         # Initialize the User object with a user_id (loaded from the database)
         self.id = user_id
 
     @staticmethod
     def verify_password(saved_password_hash, provided_password):
-        """Verify password"""
-        # Static method to verify a provided password against a saved hashed password
+        """Verify a provided password against a saved hashed password."""
+        # Verify a provided password against a saved hashed password
         return check_password_hash(saved_password_hash, provided_password)
 
 
 # Define the Database class
 class Database:
-    """Database class for managing database connections"""
+    """Database class for managing database connections."""
 
     def __init__(self):
+        """Initialize the Database object."""
         try:
             # Establish a connection to the MySQL database using environment variables
             self.conn = mysql.connector.connect(
-                host=config('DB_HOST'),
-                user=config('DB_USER'),
-                password=config('DB_PASSWORD'),
-                database=config('DB_NAME')
+                host=os.getenv('DB_HOST'),
+                user=os.getenv('DB_USER'),
+                password=os.getenv('DB_PASSWORD'),
+                database=os.getenv('DB_NAME')
             )
 
             # Check if the connection is successful
@@ -47,12 +49,9 @@ class Database:
         except Error as e:
             # Print an error message if connection fails
             print("Error connecting to mySQL", e)
-            # error_message = f"Error connecting to mySQL: {e}"
-            # logging.error(error_message)
 
     def close(self):
-        """Close the database connection"""
-
+        """Close the database connection."""
         # Check if the database connection is open
         if self.conn.is_connected():
             # Close the cursor to release resources
