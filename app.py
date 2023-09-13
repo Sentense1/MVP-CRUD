@@ -4,8 +4,10 @@ import os
 from flask import Flask, render_template, flash, request, redirect, url_for
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 from dotenv import load_dotenv
+from mysql.connector import Error
 from model import Database, User
 from handlers import errors
+
 
 # Load environment variables from the '.env' file
 load_dotenv()
@@ -34,9 +36,9 @@ def load_user(user_id):
     """Handles flask_login loading."""
 
     # Create a new Database instance to connect to the MySQL database.
-    db = Database()
+    data_base = Database()
     # Get a cursor for executing SQL queries on the database.
-    cursor = db.cursor
+    cursor = data_base.cursor
 
     # Execute a SQL query to select a user from the 'users' table.
     cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
@@ -45,7 +47,7 @@ def load_user(user_id):
     user_data = cursor.fetchone()
 
     # Close the database connection to release resources.
-    db.close()
+    data_base.close()
 
     # If user data is found in the database:
     if user_data:
@@ -72,9 +74,9 @@ def home():
     """Rendering students data to home."""
     try:
         # Create a new Database instance to connect to the MySQL database.
-        db = Database()
+        data_base = Database()
         # Get a cursor for executing SQL queries on the database.
-        cursor = db.cursor
+        cursor = data_base.cursor
 
         # Execute a SQL query to select all students' data from the 'students' table.
         cursor.execute("SELECT * FROM students;")
@@ -85,13 +87,13 @@ def home():
         # Render the 'home.html' template and pass the 'students' data to the template.
         return render_template('home.html', students=students)
 
-    except Exception as e:
-        # Print an error message if any exception occurs.
-        print("Error:", str(e))
+    except Error as mysql_error:
+        # Handle MySQL-related exceptions
+        print("MySQL Error:", str(mysql_error))
     finally:
-        if db:
+        if data_base:
             # Ensure that the database connection is closed in all cases.
-            db.close()
+            data_base.close()
 
     # Render the 'home.html' template even if there's an error.
     return render_template('home.html')
@@ -103,9 +105,9 @@ def info():
     """Rendering students data to information page."""
     try:
         # Create a new Database instance to connect to the MySQL database.
-        db = Database()
+        data_base = Database()
         # Get a cursor for executing SQL queries on the database.
-        cursor = db.cursor
+        cursor = data_base.cursor
 
         # Execute a SQL query to select all students' data from the 'students' table.
         cursor.execute("SELECT * FROM students;")
@@ -113,13 +115,13 @@ def info():
         # Fetch all rows of the result, which represent student records.
         students = cursor.fetchall()
 
-    except Exception as e:
-        # Print an error message if any exception occurs.
-        print("Error:", str(e))
+    except Error as mysql_error:
+        # Handle MySQL-related exceptions
+        print("MySQL Error:", str(mysql_error))
     finally:
-        if db:
+        if data_base:
             # Ensure that the database connection is closed in all cases.
-            db.close()
+            data_base.close()
 
     # Render the 'home.html' template even if there's an error.
     return render_template('info.html', students=students)
@@ -139,8 +141,8 @@ def login():
 
         try:
             # Try to establish a database connection
-            db = Database()
-            cursor = db.cursor
+            data_base = Database()
+            cursor = data_base.cursor
 
             # Execute a SQL query to retrieve user data based on the provided username.
             cursor.execute(
@@ -162,7 +164,7 @@ def login():
                     # Flash a success message.
                     flash('Login successful!', 'success')
                     # Close the database connection.
-                    db.close()
+                    data_base.close()
                     # Redirect the user to the 'home' page upon successful login.
                     return redirect(url_for('home'))
 
@@ -174,11 +176,11 @@ def login():
                 # If the username is not found, display an error flash message.
                 flash('Login failed. Check your username.', 'error')
             # Close the database connection.
-            db.close()
+            data_base.close()
 
-        except Exception as e:
-            # Print an error message if any exception occurs.
-            print("Error:", str(e))
+        except Error as mysql_error:
+            # Handle MySQL-related exceptions
+            print("MySQL Error:", str(mysql_error))
 
     # Render the 'login.html' template if the request method is GET or if login fails.
     return render_template('login.html')
@@ -196,14 +198,14 @@ def add_student():
 
             # Get form data
             name = request.form.get('name')
-            phoneNumber = request.form.get('phoneNumber')
+            phone_number = request.form.get('phoneNumber')
             email = request.form.get('email')
 
             # Strip leading and trailing whitespace from form data
             if name:
                 name.strip()
-            if phoneNumber:
-                phoneNumber.strip()
+            if phone_number:
+                phone_number.strip()
             if email:
                 email.strip()
 
@@ -213,7 +215,7 @@ def add_student():
                 return redirect(url_for('add_student'))
 
             # Check if the phoneNumber field is empty
-            if not phoneNumber:
+            if not phone_number:
                 flash('Phone Number cannot be empty!', 'error')
                 # Redirect back to the edit form
                 return redirect(url_for('add_student'))
@@ -225,23 +227,23 @@ def add_student():
                 return redirect(url_for('add_student'))
 
             # Create a new Database instance to connect to the MySQL database.
-            db = Database()
+            data_base = Database()
             # Create a cursor
-            cursor = db.cursor
+            cursor = data_base.cursor
             # Create the INSERT query
             insert_query = "INSERT INTO students (Name, PhoneNumber, Email)"
             # Create the VALUES query
             values_query = "VALUES (%s, %s, %s)"
             # Execute the INSERT query
             cursor.execute(insert_query + values_query,
-                           (name, phoneNumber, email))
+                           (name, phone_number, email))
 
             # Commit the changes to the database
-            db.conn.commit()
+            data_base.conn.commit()
             # Close the cursor
             cursor.close()
             # Close the database connection
-            db.close()
+            data_base.close()
 
             # Flash a success message
             flash('Student added successfully!', 'success')
@@ -265,15 +267,15 @@ def edit(student_id):
             # Get form data for name
             name = request.form.get('name')
             # Get form data for phoneNumber
-            phoneNumber = request.form.get('phoneNumber')
+            phone_number = request.form.get('phoneNumber')
             # Get form data for email
             email = request.form.get('email')
 
             # Strip leading and trailing whitespace from form data
             if name:
                 name.strip()
-            if phoneNumber:
-                phoneNumber.strip()
+            if phone_number:
+                phone_number.strip()
             if email:
                 email.strip()
 
@@ -283,7 +285,7 @@ def edit(student_id):
                 return redirect(url_for('edit', student_id=student_id))
 
             # Check if the phoneNumber field is empty
-            if not phoneNumber:
+            if not phone_number:
                 flash('Phone Number cannot be empty!', 'error')
                 # Redirect back to the edit form
                 return redirect(url_for('edit', student_id=student_id))
@@ -295,22 +297,24 @@ def edit(student_id):
                 return redirect(url_for('edit', student_id=student_id))
 
             # Create a new Database instance to connect to the MySQL.
-            db = Database()
+            data_base = Database()
             # Get a cursor for executing SQL queries on the database.
-            cursor = db.cursor
+            cursor = data_base.cursor
             # Get update query
             update_query = "UPDATE students SET Name = %s, PhoneNumber = %s, Email = %s "
             id_query = "WHERE ID = %s"
-            form_data = (name, phoneNumber, email, student_id)
+
+            # define the data to be inserted
+            form_data = (name, phone_number, email, student_id)
             # Execute the UPDATE query
             cursor.execute(
                 update_query + id_query, form_data)
             # Commit the changes to the database
-            db.conn.commit()
+            data_base.conn.commit()
             # Close the cursor
             cursor.close()
             # Close the database connection3
-            db.close()
+            data_base.close()
 
             # Flash a success message
             flash('Student information updated successfully!', 'success')
@@ -319,15 +323,15 @@ def edit(student_id):
             return redirect(url_for('home'))
 
         # If it's a GET request, fetch the student data and display the edit form
-        db = Database()
+        data_base = Database()
         # Create a new Database instance to connect to the MySQL database.
-        cursor = db.cursor
+        cursor = data_base.cursor
         # Get a cursor for executing SQL queries on the database.
         cursor.execute("SELECT * FROM students WHERE ID = %s", (student_id,))
         # Fetch the first (and only) row of the result, which should contain student data.
         student = cursor.fetchone()
         # Close the database connection to release resources.
-        db.close()
+        data_base.close()
 
         # Pass the student data to the edit form template
         return render_template('edit.html', student=student)
@@ -341,9 +345,9 @@ def delete(student_id):
     if current_user.is_authenticated:
 
         # Create a new Database instance to connect to the MySQL database.
-        db = Database()
+        data_base = Database()
         # Get a cursor for executing SQL queries on the database.
-        cursor = db.cursor
+        cursor = data_base.cursor
         # Execute a SQL query to select a student from the 'students' table based on their 'id'.
         cursor.execute("SELECT * FROM students WHERE ID = %s", (student_id,))
         # Fetch the first (and only) row of the result, which should contain student data.
@@ -365,11 +369,11 @@ def delete(student_id):
             cursor.execute(delete_query, (student_id,))
 
             # Commit the changes to the database
-            db.conn.commit()
+            data_base.conn.commit()
             # Close the cursor
             cursor.close()
             # Close the database connection
-            db.close()
+            data_base.close()
 
             # Flash a success message
             flash('Student deleted successfully!', 'success')
@@ -386,9 +390,9 @@ def delete(student_id):
 def archived_students():
     """ Rendering archived students page. """
     # Create a new Database instance to connect to the MySQL database.
-    db = Database()
+    data_base = Database()
     # Get a cursor for executing SQL queries on the database.
-    cursor = db.cursor
+    cursor = data_base.cursor
     # Execute a SQL query to select all students' data
     cursor.execute("SELECT * FROM archived_students")
     # Fetch all rows of the result, which represent student records.
