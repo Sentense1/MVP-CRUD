@@ -44,11 +44,11 @@ class Database:
 
             # Check if the connection is successful
             if self.conn.is_connected():
-                # Create a cursor object for executing SQL queries and return results as dictionaries
+                # Create a cursor object for executing SQL queries
                 self.cursor = self.conn.cursor(dictionary=True)
-        except Error as e:
+        except Error as error:
             # Print an error message if connection fails
-            print("Error connecting to mySQL", e)
+            print("Error connecting to mySQL", error)
 
     def close(self):
         """Close the database connection."""
