@@ -75,6 +75,21 @@ h1 {
     height: 500px; /* Set the height of the element */
 }
 
+.about-feature h2 {
+    text-align: left; /* left-align text in the element */
+}
+
+.archived-students-feature {
+    display: flex; /* Display the element as a flex container */
+    flex-direction: column; /* Arrange child elements vertically */
+    justify-content: center; /* Center child elements vertically */
+    align-items: center; /* Align child elements to the center */
+    margin-bottom: 40px; /* Add margin to the bottom for spacing */
+    margin-left: 40px; /* Add margin to the left for spacing */
+    color: white; /* Set text color to white */
+    height: 500px; /* Set the height of the element */
+}
+
 .stud-info-feature {
     display: flex; /* Display the element as a flex container */
     flex-direction: column; /* Arrange child elements vertically */
@@ -97,6 +112,11 @@ h1 {
 }
 
 .stud-info-feature img {
+    max-width: 400px; /* Set the maximum width for images within this element */
+    margin-left: 10px; /* Add margin to the left of images for spacing */
+}
+
+.archived-students-feature img {
     max-width: 400px; /* Set the maximum width for images within this element */
     margin-left: 10px; /* Add margin to the left of images for spacing */
 }
