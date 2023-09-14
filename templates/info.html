@@ -9,7 +9,8 @@
 <header>
     <nav>
         <ul>
-            <li><a href="/">Welcome</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/home">Add Students</a></li>
             <li><a href="/archived_students">Archived Students</a></li>
             {% if current_user.is_authenticated %}
             <li><a href="{{ url_for('logout') }}">Logout</a></li>

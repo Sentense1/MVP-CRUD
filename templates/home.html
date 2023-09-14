@@ -11,7 +11,7 @@
 <header>
     <nav>
         <ul>
-            <li><a href="/">Welcome</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/info">Student Information</a></li>
             <li><a href="/archived_students">Archived Students</a></li>
             <li><a href="/about">About</a></li>
@@ -41,18 +41,17 @@
     
         
         
-        <li><a href="/add_student" class="home-add-student">Add Student</a></li>
+        <li class="home-add-student"><a href="/add_student" class="home-add-student">Add Student</a></li>
         
 
-    <table>
+    <table class="home-table">
         <tr>
             
             <th class="home-th">ID</th>
             <th class="home-th">Name</th>
             <th class="home-th">Phone Number</th>
             <th class="home-th">Email</th>
-            
-                <th>Actions</th>
+            <th class="home-th">Actions</th>
             
         </tr>
         {% for student in students %}

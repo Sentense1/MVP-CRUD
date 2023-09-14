@@ -8,7 +8,8 @@
 <header>
     <nav>
         <ul>
-            <li><a href="/">Welcome</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/home">Add Students</a></li>
             <li><a href="/info">Student Information</a></li>
             <li><a href="/about">About Us</a></li>
             {% if current_user.is_authenticated %}
@@ -24,20 +25,20 @@
 <main>
     <h1>Archived Students</h1>
 
-    <table class"arch-table">
+    <table class="arch-table">
         <tr>
-            <th class"arch-th">ID</th>
-            <th class"arch-th">Name</th>
-            <th class"arch-th">Phone Number</th>
-            <th class"arch-th">Email</th>
+            <th class="arch-th">ID</th>
+            <th class="arch-th">Name</th>
+            <th class="arch-th">Phone Number</th>
+            <th class="arch-th">Email</th>
         </tr>
 
         {% for archived_student in archived_students %}
             <tr>
-                <th class"arch-th">{{ archived_student['id'] }}</th>
-                <th class"arch-th">{{ archived_student['name'] }}</th>
-                <th class"arch-th">{{ archived_student['phoneNumber'] }}</th>
-                <th class"arch-th">{{ archived_student['email'] }}</th>
+                <th class="arch-th">{{ archived_student['id'] }}</th>
+                <th class="arch-th">{{ archived_student['name'] }}</th>
+                <th class="arch-th">{{ archived_student['phoneNumber'] }}</th>
+                <th class="arch-th">{{ archived_student['email'] }}</th>
             </tr>
         {% endfor %}
     </table>
