@@ -1,0 +1,480 @@
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif; /* Set the font style for the entire page */
+    background-color: #f4f4f4; /* Set the background color for the body */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+}
+
+/* Header Styles */
+header {
+    background-color: #333; /* Set the background color for the header */
+    color: #fff; /* Set the text color in the header to white */
+    padding: 10px 0; /* Add padding to the header */
+    text-align: center; /* Center-align the text in the header */
+}
+
+nav ul {
+    list-style-type: none; /* Remove the list-style (bullets) from the unordered list */
+    padding: 0; /* Remove padding from the unordered list */
+}
+
+nav ul li {
+    display: inline; /* Display list items horizontally */
+    margin-right: 20px; /* Add right margin to list items for spacing */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline from anchor links */
+    color: #fff; /* Set the text color of anchor links to white */
+    font-weight: bold; /* Set the font weight to bold for anchor links */
+}
+
+a {
+    text-decoration: none; /* Remove underline from all anchor links */
+    color: #007BFF; /* Set the default text color for anchor links */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline to anchor links on hover */
+    color: blue; /* Change the text color of anchor links on hover to blue */
+}
+
+/* Main Content Styles */
+.main {
+    max-width: 800px; /* Set the maximum width of the main content container */
+    margin: 0 auto; /* Center the main content horizontally */
+    padding: 20px; /* Add padding to the main content */
+    background-color: #fff; /* Set the background color of the main content to white */
+    border-radius: 5px; /* Add rounded corners to the main content */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a shadow to the main content */
+}
+
+h1 {
+    color: #333; /* Set the color of h1 headings to dark gray */
+}
+
+.home-feature {
+    display: flex; /* Display the element as a flex container */
+    flex-direction: column; /* Arrange child elements vertically */
+    justify-content: flex-start; /* Align child elements to the top */
+    align-items: center; /* Center child elements horizontally */
+    margin-bottom: 40px; /* Add margin to the bottom for spacing */
+    color: white; /* Set text color to white */
+    height: 500px; /* Set the height of the element */
+}
+
+.about-feature {
+    display: flex; /* Display the element as a flex container */
+    flex-direction: column; /* Arrange child elements vertically */
+    justify-content: center; /* Center child elements vertically */
+    align-items: flex-end; /* Align child elements to the right */
+    margin-bottom: 40px; /* Add margin to the bottom for spacing */
+    margin-right: 40px; /* Add margin to the right for spacing */
+    color: white; /* Set text color to white */
+    height: 500px; /* Set the height of the element */
+}
+
+.about-feature h2 {
+    text-align: left; /* left-align text in the element */
+}
+
+.archived-students-feature {
+    display: flex; /* Display the element as a flex container */
+    flex-direction: column; /* Arrange child elements vertically */
+    justify-content: center; /* Center child elements vertically */
+    align-items: center; /* Align child elements to the center */
+    margin-bottom: 40px; /* Add margin to the bottom for spacing */
+    margin-left: 40px; /* Add margin to the left for spacing */
+    color: white; /* Set text color to white */
+    height: 500px; /* Set the height of the element */
+}
+
+.stud-info-feature {
+    display: flex; /* Display the element as a flex container */
+    flex-direction: column; /* Arrange child elements vertically */
+    justify-content: flex-start; /* Align child elements to the top */
+    align-items: flex-start; /* Align child elements to the left */
+    margin-bottom: 40px; /* Add margin to the bottom for spacing */
+    margin-left: 40px; /* Add margin to the left for spacing */
+    color: white; /* Set text color to white */
+    height: 500px; /* Set the height of the element */
+}
+
+.about-feature img {
+    max-width: 400px; /* Set the maximum width for images within this element */
+    margin-left: 10px; /* Add margin to the left of images for spacing */
+}
+
+.home-feature img {
+    max-width: 400px; /* Set the maximum width for images within this element */
+    margin-left: 10px; /* Add margin to the left of images for spacing */
+}
+
+.stud-info-feature img {
+    max-width: 400px; /* Set the maximum width for images within this element */
+    margin-left: 10px; /* Add margin to the left of images for spacing */
+}
+
+.archived-students-feature img {
+    max-width: 400px; /* Set the maximum width for images within this element */
+    margin-left: 10px; /* Add margin to the left of images for spacing */
+}
+
+#feature {
+    padding: auto; /* Set auto padding */
+    background: rgb(14, 3, 46); /* Set the background color */
+    max-width: 800px; /* Set the maximum width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Dark theme styles */
+.dark-theme {
+    background-color: #333; /* Set the background color to dark gray */
+    color: #fff; /* Set text color to white */
+}
+
+
+
+/* Style for login form */
+.login-main {
+    margin: 20px; /* Margin around the main content */
+    padding: 20px; /* Padding for the main content */
+    border: 1px solid #ddd; /* Border for the main content */
+    background-color: #f9f9f9; /* Background color for the main content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for the main content */
+    text-align: center; /* Center-align text in the main content */
+}
+
+.login-h1 {
+    font-size: 24px; /* Font size for headings */
+    margin-bottom: 20px; /* Bottom margin for headings */
+}
+
+.login-form {
+    max-width: 400px; /* Maximum width for the form */
+    margin: 0 auto; /* Center-align the form horizontally */
+}
+
+.login-label {
+    display: block; /* Display labels as block elements */
+    margin-bottom: 5px; /* Bottom margin for labels */
+    font-weight: bold; /* Apply bold font weight to labels */
+}
+
+.login-input[type="text"],
+.login-input[type="password"] {
+    width: 100%; /* Set input fields to 100% width */
+    padding: 10px; /* Padding for input fields */
+    margin-bottom: 10px; /* Bottom margin for input fields */
+    border: 1px solid #ccc; /* Border for input fields */
+    border-radius: 4px; /* Rounded corners for input fields */
+}
+
+.login-button[type="submit"] {
+    background-color: #333; /* Background color for submit button */
+    color: #fff; /* Text color for submit button */
+    padding: 10px 20px; /* Padding for submit button */
+    border: none; /* Remove border for submit button */
+    border-radius: 4px; /* Rounded corners for submit button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.login-button[type="submit"]:hover {
+    background-color: #555; /* Background color change on hover */
+}
+
+/* Style for flash messages */
+.login-flash-messages ul {
+    list-style-type: none; /* Remove bullet points from flash messages list */
+    padding: 0; /* Remove padding for flash messages list */
+    margin: 0; /* Remove margin for flash messages list */
+    color: #fff; /* Text color for flash messages */
+}
+
+.login-flash-messages li {
+    background-color: #e70b0b; /* Background color for flash messages */
+    padding: 10px; /* Padding for flash messages */
+    margin-bottom: 10px; /* Bottom margin for flash messages */
+    border-radius: 4px; /* Rounded corners for flash messages */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Box shadow for flash messages */
+}
+
+
+
+/* Table Styles */
+.info-table {
+    width: 100%; /* Set table width to 100% */
+    border-collapse: collapse; /* Collapse table borders */
+    margin-top: 20px; /* Top margin for the table */
+}
+
+.info-th, .info-td {
+    border: 1px solid #ddd; /* Border styles for table cells */
+    padding: 8px; /* Padding for table cells */
+    text-align: left; /* Left-align text in cells */
+}
+
+.info-th {
+    background-color: #f2f2f2; /* Background color for table headers */
+}
+
+/* Flash Messages */
+.flash-message {
+    padding: 10px; /* Padding for flash messages */
+    border-radius: 5px; /* Rounded corners for messages */
+    margin-top: 10px; /* Top margin for messages */
+}
+
+.flash-success {
+    background-color: #28a745; /* Background color for success messages */
+    color: #fff; /* Text color for success messages */
+}
+
+.flash-error {
+    background-color: #dc3545; /* Background color for error messages */
+    color: #fff; /* Text color for error messages */
+}
+
+
+/* Table Styles */
+.home-table {
+    width: 100%; /* Set the table width to 100% of its container */
+    border-collapse: collapse; /* Collapse borders for table cells */
+    margin-top: 20px; /* Add top margin to the table */
+}
+
+.home-th, .home-td {
+    border: 1px solid #ddd; /* Add 1px solid border with light gray color to table cells */
+    padding: 8px; /* Add padding to table cells */
+    text-align: left; /* Left-align text in table cells */
+}
+
+.home-th {
+    background-color: #f2f2f2; /* Set background color for table header cells */
+}
+
+/* Action Buttons */
+
+.home-edit-button {
+    background-color: #007bff; /* Set background color for edit buttons */
+    color: #fff; /* Set text color for edit buttons to white */
+}
+
+.home-delete-button {
+    background-color: #dc3545; /* Set background color for delete buttons */
+    color: #fff; /* Set text color for delete buttons to white */
+}
+
+/* Flash Messages */
+.home-flash-message {
+    padding: 10px; /* Add padding to flash messages */
+    border-radius: 5px; /* Add rounded corners to flash messages */
+    margin-top: 10px; /* Add top margin to flash messages */
+}
+
+.home-flash-success {
+    background-color: #28a745; /* Set background color for success messages */
+    color: #fff; /* Set text color for success messages to white */
+}
+
+.home-flash-error {
+    background-color: #dc3545; /* Set background color for error messages */
+    color: #fff; /* Set text color for error messages to white */
+}
+
+.home-add-student {
+    display: inline-block; /* Display the "Add Student" button as an inline block element */
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #007BFF; /* Set the background color of the button */
+    color: #fff; /* Set the text color of the button to white */
+    text-decoration: none; /* Remove underlines from the button */
+    border-radius: 4px; /* Add rounded corners to the button */
+    transition: background-color 0.3s; /* Add a smooth background color transition on hover */
+
+    /* Optional: Add more styling as needed */
+}
+
+.home-add-student:hover {
+    background-color: red; /* Change the background color to red on hover */
+}
+
+
+
+/* CSS for styling the main content */
+.edit-main {
+    margin: 20px; /* Add margin around the main content */
+    padding: 20px; /* Add padding to the main content */
+    border: 1px solid #ddd; /* Add a 1px solid border with light gray color to the main content */
+    background-color: #f9f9f9; /* Set the background color of the main content to light gray */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect to the main content */
+    text-align: center; /* Center-align the text within the main content */
+}
+
+.edit-h1 {
+    font-size: 24px; /* Set the font size for h1 headings */
+    margin-bottom: 20px; /* Add margin at the bottom of h1 headings */
+}
+
+.edit-label {
+    display: block; /* Display labels as blocks (one below the other) */
+    margin-bottom: 10px; /* Add margin at the bottom of labels */
+}
+
+.edit-input[type="text"],
+.edit-input[type="email"] {
+    width: 100%; /* Make text input fields take up the full width of their container */
+    padding: 10px; /* Add padding to input fields */
+    margin-bottom: 10px; /* Add margin at the bottom of input fields */
+    border: 1px solid #ddd; /* Add a 1px solid border with light gray color to input fields */
+    border-radius: 5px; /* Add rounded corners to input fields */
+}
+
+.edit-button[type="submit"] {
+    background-color: #333; /* Set the background color of the submit button to dark gray */
+    color: #fff; /* Set the text color of the submit button to white */
+    padding: 10px 20px; /* Add padding to the submit button */
+    border: none; /* Remove the button border */
+    border-radius: 5px; /* Add rounded corners to the submit button */
+    cursor: pointer; /* Change cursor to a pointer on hover */
+}
+
+
+
+/* Table Styles */
+.arch-table {
+    width: 100%; /* Set table width to 100% */
+    border-collapse: collapse; /* Collapse table borders */
+    margin-top: 20px; /* Top margin for the table */
+}
+
+.arch-th, .arch-td {
+    border: 1px solid #ddd; /* Border styles for table cells */
+    padding: 8px; /* Padding for table cells */
+    text-align: left; /* Left-align text in cells */
+}
+
+.arch-th {
+    background-color: #f2f2f2; /* Background color for table headers */
+}
+
+
+/* Flash Messages */
+.flash-message {
+    padding: 10px; /* Padding for flash messages */
+    border-radius: 5px; /* Rounded corners for messages */
+    margin-top: 10px; /* Top margin for messages */
+}
+
+.flash-success {
+    background-color: #28a745; /* Background color for success messages */
+    color: #fff; /* Text color for success messages */
+}
+
+.flash-error {
+    background-color: #dc3545; /* Background color for error messages */
+    color: #fff; /* Text color for error messages */
+}
+
+
+
+/* Style for form */
+.add-main {
+    margin: 20px; /* Add margin around the main content */
+    padding: 20px; /* Add padding to the main content */
+    border: 1px solid #ddd; /* Add a 1px solid border with light gray color to the main content */
+    background-color: #f9f9f9; /* Set the background color of the main content to light gray */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect to the main content */
+}
+
+.add-h1 {
+    font-size: 24px; /* Set the font size for h1 headings */
+    margin-bottom: 20px; /* Add margin at the bottom of h1 headings */
+}
+
+.add-form {
+    max-width: 400px; /* Set the maximum width of the form */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+.add-label {
+    display: block; /* Display labels as blocks (one below the other) */
+    margin-bottom: 5px; /* Add margin at the bottom of labels */
+    font-weight: bold; /* Set labels to bold text */
+}
+
+.add-input[type="text"],
+.add-input[type="tel"],
+.add-input[type="email"] {
+    width: 100%; /* Make text input fields take up the full width of their container */
+    padding: 10px; /* Add padding to input fields */
+    margin-bottom: 10px; /* Add margin at the bottom of input fields */
+    border: 1px solid #ccc; /* Add a 1px solid border with light gray color to input fields */
+    border-radius: 4px; /* Add rounded corners to input fields */
+}
+
+.add-input[type="submit"] {
+    background-color: #333; /* Set the background color of the submit button to dark gray */
+    color: #fff; /* Set the text color of the submit button to white */
+    padding: 10px 20px; /* Add padding to the submit button */
+    border: none; /* Remove the button border */
+    border-radius: 4px; /* Add rounded corners to the submit button */
+    cursor: pointer; /* Change cursor to a pointer on hover */
+}
+
+.add-input[type="submit"]:hover {
+    background-color: #555; /* Darken the submit button background color on hover */
+}
+
+
+
+/* Content styles */
+.about-content {
+    margin: 20px; /* Add margin around content */
+}
+
+.about-page-container {
+    max-width: 800px; /* Set the maximum width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding around the container */
+    background-color: #f5f5f5; /* Set background color of the container */
+    border: 1px solid #ddd; /* Add a 1px solid border with a light gray color */
+    border-radius: 5px; /* Add rounded corners to the container */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect to the container */
+}
+
+.about-h1 {
+    font-size: 24px; /* Set the font size for h1 headings */
+    margin-bottom: 20px; /* Add margin at the bottom of h1 headings */
+}
+
+/* Footer styles */
+.about-footer {
+    background-color: #333; /* Set background color for the footer */
+    color: white; /* Set text color in the footer to white */
+    padding: 18px 0; /* Add padding to the footer (top and bottom) */
+    text-align: center; /* Center-align text in the footer */
+    margin-top: 30%; /* Add margin to the top of the footer */
+}
+
+.social-links a {
+    color: white; /* Set text color of social links to white */
+    text-decoration: none; /* Remove underlines from social links */
+    margin: 0 10px; /* Add horizontal margin to social links */
+    font-size: 18px; /* Set the font size for social links */
+}
+
+.page-links {
+    margin-top: 10px; /* Add margin to the top of page links */
+}
+
+.page-links a {
+    color: white; /* Set text color of page links to white */
+    text-decoration: none; /* Remove underlines from page links */
+    margin: 0 10px; /* Add horizontal margin to page links */
+}
+
+.about-a:hover {
+    text-decoration: underline; /* Add underlines to anchor links on hover */
+    color: blue; /* Change the text color of anchor links on hover to blue */
+}
