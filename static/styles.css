@@ -41,7 +41,7 @@ a:hover {
 }
 
 /* Main Content Styles */
-.main {
+main {
     max-width: 800px; /* Set the maximum width of the main content container */
     margin: 0 auto; /* Center the main content horizontally */
     padding: 20px; /* Add padding to the main content */
@@ -138,12 +138,14 @@ h1 {
 
 /* Style for login form */
 .login-main {
-    margin: 20px; /* Margin around the main content */
-    padding: 20px; /* Padding for the main content */
+    margin: 30px auto; /* Margin around the main content */
+    padding: 50px; /* Padding for the main content */
     border: 1px solid #ddd; /* Border for the main content */
     background-color: #f9f9f9; /* Background color for the main content */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for the main content */
     text-align: center; /* Center-align text in the main content */
+    border-radius: 5px;
+    
 }
 
 .login-h1 {
@@ -239,19 +241,19 @@ h1 {
 
 /* Table Styles */
 .home-table {
-    width: 100%; /* Set the table width to 100% of its container */
-    border-collapse: collapse; /* Collapse borders for table cells */
-    margin-top: 20px; /* Add top margin to the table */
+    width: 100%; /* Set table width to 100% */
+    border-collapse: collapse; /* Collapse table borders */
+    margin-top: 20px; /* Top margin for the table */
 }
 
 .home-th, .home-td {
-    border: 1px solid #ddd; /* Add 1px solid border with light gray color to table cells */
-    padding: 8px; /* Add padding to table cells */
-    text-align: left; /* Left-align text in table cells */
+    border: 1px solid #ddd; /* Border styles for table cells */
+    padding: 8px; /* Padding for table cells */
+    text-align: left; /* Left-align text in cells */
 }
 
 .home-th {
-    background-color: #f2f2f2; /* Set background color for table header cells */
+    background-color: #f2f2f2; /* Background color for table headers */
 }
 
 /* Action Buttons */
@@ -261,6 +263,13 @@ h1 {
     color: #fff; /* Set text color for edit buttons to white */
 }
 
+.home-edit-button:hover {
+    background-color: blue; /* Change the background color to red on hover */
+}
+
+.home-delete-button:hover {
+    background-color: red; /* Change the background color to red on hover */
+}
 .home-delete-button {
     background-color: #dc3545; /* Set background color for delete buttons */
     color: #fff; /* Set text color for delete buttons to white */
@@ -303,8 +312,8 @@ h1 {
 
 /* CSS for styling the main content */
 .edit-main {
-    margin: 20px; /* Add margin around the main content */
-    padding: 20px; /* Add padding to the main content */
+    margin: 5px auto; /* Add margin around the main content */
+    padding: 5px auto; /* Add padding to the main content */
     border: 1px solid #ddd; /* Add a 1px solid border with light gray color to the main content */
     background-color: #f9f9f9; /* Set the background color of the main content to light gray */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect to the main content */
@@ -341,14 +350,13 @@ h1 {
 
 
 
-/* Table Styles */
 .arch-table {
     width: 100%; /* Set table width to 100% */
     border-collapse: collapse; /* Collapse table borders */
     margin-top: 20px; /* Top margin for the table */
 }
 
-.arch-th, .arch-td {
+.arch-th, .info-td {
     border: 1px solid #ddd; /* Border styles for table cells */
     padding: 8px; /* Padding for table cells */
     text-align: left; /* Left-align text in cells */
@@ -380,7 +388,7 @@ h1 {
 
 /* Style for form */
 .add-main {
-    margin: 20px; /* Add margin around the main content */
+    margin: 5px auto; /* Add margin around the main content */
     padding: 20px; /* Add padding to the main content */
     border: 1px solid #ddd; /* Add a 1px solid border with light gray color to the main content */
     background-color: #f9f9f9; /* Set the background color of the main content to light gray */
@@ -390,6 +398,7 @@ h1 {
 .add-h1 {
     font-size: 24px; /* Set the font size for h1 headings */
     margin-bottom: 20px; /* Add margin at the bottom of h1 headings */
+    text-align: center /* Center-align text in the main content */;
 }
 
 .add-form {
@@ -446,6 +455,12 @@ h1 {
 .about-h1 {
     font-size: 24px; /* Set the font size for h1 headings */
     margin-bottom: 20px; /* Add margin at the bottom of h1 headings */
+    text-align: center; /* Center-align text in the main content */
+}
+
+.about-p {
+    font-size: 16px; /* Set the font size for h1 headings */
+    text-align: center; /* Center-align text in the main content */
 }
 
 /* Footer styles */
