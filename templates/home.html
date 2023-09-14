@@ -14,8 +14,13 @@
             <li><a href="/">Welcome</a></li>
             <li><a href="/info">Student Information</a></li>
             <li><a href="/archived_students">Archived Students</a></li>
-            <li><a href="/info">Logout</a></li>
             <li><a href="/about">About</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+            <li><a href="/login">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
 </header>
@@ -36,16 +41,16 @@
     
         
         
-        <li><a href="/add_student" class="add-student">Add Student</a></li>
+        <li><a href="/add_student" class="home-add-student">Add Student</a></li>
         
 
     <table>
         <tr>
             
-            <th>ID</th>
-            <th>Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
+            <th class="home-th">ID</th>
+            <th class="home-th">Name</th>
+            <th class="home-th">Phone Number</th>
+            <th class="home-th">Email</th>
             
                 <th>Actions</th>
             
@@ -53,20 +58,20 @@
         {% for student in students %}
         
             <tr>
-                <td>{{ student.ID }}</td>
-                <td>{{ student.Name }}</td>
-                <td>{{ student.PhoneNumber }}</td>
-                <td>{{ student.Email }}</td>
+                <td class="home-td">{{ student.ID }}</td>
+                <td class="home-td">{{ student.Name }}</td>
+                <td class="home-td">{{ student.PhoneNumber }}</td>
+                <td class="home-td">{{ student.Email }}</td>
                 
                 
-                <td>
+                <td class="home-td">
                     <form method="POST" action="{{ url_for('edit', student_id=student['ID']) }}" style="display: inline-block;">
                         <!-- Add form fields for editing here if needed -->
-                        <button type="submit" class="edit-button">Edit</button>
+                        <button type="submit" class="home-edit-button">Edit</button>
                     </form>
                     <form method="POST" action="{{ url_for('delete', student_id=student['ID']) }}" style="display: inline-block;">
                         <!-- Add form fields for deletion here if needed -->
-                        <button type="submit" class="delete-button">Delete</button>
+                        <button type="submit" class="home-delete-button">Delete</button>
                     </form>
                 </td>
                 

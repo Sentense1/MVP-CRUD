@@ -9,24 +9,29 @@
         <ul>
             <li><a href="/">Welcome</a></li>
             <li><a href="/info">student Information</a></li>
-            <li><a href="/info">Logout</a></li>
             <li><a href="/about">About</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+            <li><a href="/login">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
 </header>
-<main>
-    <h1>Add Student</h1>
-    <form method="POST" action="/add_student">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br>
+<main class"add-main">
+    <h1 class"add-h1">Add Student</h1>
+    <form method="POST" action="/add_student" class"add-form">
+        <label for="name" class"add-label">Name:</label>
+        <input type="text" id="name" name="name" required class"add-input"><br>
 
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+        <label for="phoneNumber" class"add-label">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required class"add-input"><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
+        <label for="email" class"add-label">Email:</label>
+        <input type="email" id="email" name="email" required class"add-input"><br>
 
-        <input type="submit" value="Add Student">
+        <input type="submit" value="Add Student" class"add-input">
     </form>
 </main>
 

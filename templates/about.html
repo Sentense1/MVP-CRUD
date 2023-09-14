@@ -9,19 +9,25 @@
 <header>
     <nav>
         <ul>
-            <li><a href="/">Welcome</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/home">Add Students</a></li>
             <li><a href="/info">Student Information</a></li>
             <li><a href="/archived_students">Archived Students</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
             <li><a href="/login">Login</a></li>
+            {% endif %}
             
         </ul>
     </nav>
 </header>
 
-<section class="content">
-<div class="page-container">
+<section class="about-content">
+<div class="about-page-container">
 
-    <h1>Portfolio inspiration</h1>
+    <h1class"about-h1">Portfolio inspiration</h1>
     <p>I realised that some schools in this part of the world <br>
         rely on just multiple paper work to keep up with recording <br>
         and data storage and up-keep. <br>
@@ -31,15 +37,15 @@
         be able to do this project.
      </p>
      
-     <footer class="footer">
+     <footer class="about-footer">
         <p>
         <p>Visit Holberton School: <a href="https://www.holbertonschool.com" target="_blank">holbertonschool.com</a></p>
      </p>
 
      <div class="social-links">
-            <a href="https://github.com/sentense1" target="_blank">github<i class="fab fa-github"></i></a>
-            <a href="https://twitter.com/realexsaint" target="_blank">twitter<i class="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com" target="_blank">linkedin<i class="fab fa-linkedin"></i></a>
+            <a class"about-a" href="https://github.com/sentense1" target="_blank">github<i class="fab fa-github"></i></a>
+            <a class"about-a" href="https://twitter.com/realexsaint" target="_blank">twitter<i class="fab fa-twitter"></i></a>
+            <a class"about-a" href="https://www.linkedin.com" target="_blank">linkedin<i class="fab fa-linkedin"></i></a>
             <h4>Email: johnson.oragui@gmail.com</h4>
     </div>
      </footer>

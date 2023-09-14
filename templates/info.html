@@ -11,10 +11,11 @@
         <ul>
             <li><a href="/">Welcome</a></li>
             <li><a href="/archived_students">Archived Students</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
             {% if not current_user.is_authenticated %}
             <li><a href="/login">Login</a></li>
-            {% else %}
-            <li><a href="/info">Logout</a></li>
             {% endif %}
             
             <li><a href="/about">About</a></li>
@@ -26,22 +27,22 @@
     
     <h1>Student Information</h1>
 
-    <table>
+    <table class="info-table">
         <tr>
             
-            <th>ID</th>
-            <th>Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
+            <th class="info-th">ID</th>
+            <th class="info-th">Name</th>
+            <th class="info-th">Phone Number</th>
+            <th class="info-th">Email</th>
             
         </tr>
         {% for student in students %}
         
             <tr>
-                <td>{{ student.ID }}</td>
-                <td>{{ student.Name }}</td>
-                <td>{{ student.PhoneNumber }}</td>
-                <td>{{ student.Email }}</td>
+                <td class="info-td">{{ student.ID }}</td>
+                <td class="info-td">{{ student.Name }}</td>
+                <td class="info-td">{{ student.PhoneNumber }}</td>
+                <td class="info-td">{{ student.Email }}</td>
                 
                 
             </tr>

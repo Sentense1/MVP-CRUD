@@ -13,24 +13,29 @@
         <ul>
             <li><a href="/archived_students">archived Students</a></li>
             <li><a href="/info">Student Information</a></li>
-            <li><a href="/info">Logout</a></li>
             <li><a href="/about">About</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+            <li><a href="/login">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
 </header>
-<main class="main">
-    <h1>Edit Student Information</h1>
+<main class="edit-main">
+    <h1 class"edit-h1">Edit Student Information</h1>
     <form  method="POST" action="">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{ student.Name }}" required>
+        <label class="edit-label" for="name">Name:</label>
+        <input class="edit-input" type="text" id="name" name="name" value="{{ student.Name }}" required>
         
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" value="{{ student.PhoneNumber }}" required>
+        <label class="edit-label" for="phoneNumber">Phone Number:</label>
+        <input class="edit-input" type="text" id="phoneNumber" name="phoneNumber" value="{{ student.PhoneNumber }}" required>
         
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="{{ student.Email }}" required>
+        <label class="edit-label" for="email">Email:</label>
+        <input class="edit-input" type="email" id="email" name="email" value="{{ student.Email }}" required>
 
-        <button type="submit">Update Student</button>
+        <button class="edit-button" type="submit">Update Student</button>
     </form>
 </main>
 

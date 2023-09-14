@@ -13,23 +13,29 @@
                 <li><a href="/archived_students">Archived Student</a></li>
                 <li><a href="/info">Student Information</a></li>
                 <li><a href="/about">About</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% endif %}
+                {% if not current_user.is_authenticated %}
+                <li><a href="/login">Login</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
-    <main>
-        <h1>Login</h1>
-        <form method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <button type="submit">Log In</button>
+    <main class="login-main">
+        <h1 class="login-h1">Login</h1>
+        <form method="POST" class="login-post">
+            <label for="username" class="login-label">Username:</label>
+            <input type="text" id="username" name="username" required class="login-input"><br><br>
+            <label for="password" class="login-label">Password:</label>
+            <input type="password" id="password" name="password" required class="login-input"><br><br>
+            <button type="submit" class="login-button">Log In</button>
         </form>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <ul class="flash-messages">
+                <ul class="login-flash-messages">
                     {% for message in messages %}
-                        <li>{{ message }}</li>
+                        <li class="login-flash-messages">{{ message }}</li>
                     {% endfor %}
                 </ul>
             {% endif %}

@@ -1,10 +1,31 @@
 {% extends 'index.html' %}
 {% block content %}
 
-<div class="error">
-    <h1>Oops! Page not found (404) </h1>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/home">Add Students</a></li>
+            <li><a href="/info">Student Information</a></li>
+            <li><a href="/archived_students">Archived Students</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+            <li><a href="/login">Login</a></li>
+            {% endif %}
+            
+        </ul>
+    </nav>
+</header>
 
-    <p>That page does not exist. Please try a different Page</p>
-</div>
+<section>
+    <div class="error">
+        <h1>Oops! Page not found (404) </h1>
+
+        <p>That page does not exist. Please try a different Page</p>
+    </div>
+</section>
+
 
 {% endblock %}

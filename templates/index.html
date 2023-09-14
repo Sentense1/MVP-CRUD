@@ -4,14 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css' )}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css' )}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='add_student_style_style.css' )}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css' )}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='about_style.css' )}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='edit_style.css' )}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='info_style.css' )}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='archived_students_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' )}}">
     <title>
         {% block title %}
             Landing page
@@ -25,8 +18,13 @@
             <ul>
                 <li><a href="/info">Student Information</a></li>
                 <li><a href="/archived_students">Archived Students</a></li>
-                    <li><a href="/login">Login</a></li>
                 <li><a href="/about">About</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% endif %}
+                {% if not current_user.is_authenticated %}
+                <li><a href="/login">Login</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

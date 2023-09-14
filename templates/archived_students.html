@@ -11,6 +11,12 @@
             <li><a href="/">Welcome</a></li>
             <li><a href="/info">Student Information</a></li>
             <li><a href="/about">About Us</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+            <li><a href="/login">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
 </header>
@@ -18,20 +24,20 @@
 <main>
     <h1>Archived Students</h1>
 
-    <table>
+    <table class"arch-table">
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
+            <th class"arch-th">ID</th>
+            <th class"arch-th">Name</th>
+            <th class"arch-th">Phone Number</th>
+            <th class"arch-th">Email</th>
         </tr>
 
         {% for archived_student in archived_students %}
             <tr>
-                <th>{{ archived_student['id'] }}</th>
-                <th>{{ archived_student['name'] }}</th>
-                <th>{{ archived_student['phoneNumber'] }}</th>
-                <th>{{ archived_student['email'] }}</th>
+                <th class"arch-th">{{ archived_student['id'] }}</th>
+                <th class"arch-th">{{ archived_student['name'] }}</th>
+                <th class"arch-th">{{ archived_student['phoneNumber'] }}</th>
+                <th class"arch-th">{{ archived_student['email'] }}</th>
             </tr>
         {% endfor %}
     </table>
