@@ -1,11 +1,18 @@
 """ importing all necessary modules """
 
+# Import the 'os' module, for reading the environment variable.
 import os
-from flask import Flask, render_template, flash, request, redirect, url_for
+# Import the 'Flask' class from the 'flask' module, for creating the Flask application.
+from flask import Flask, render_template, flash, request, redirect, url_for, make_response
+# Import the 'LoginManager' class from the 'flask_login' module, for managing user logins.
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
+# Import the 'load_dotenv' func for loading environment variables from a '.env' file.
 from dotenv import load_dotenv
+# Import the 'Error' class, for handling MySQL errors.
 from mysql.connector import Error
+# Import the 'Database' and 'user' class.
 from model import Database, User
+# Import the 'errors' Blueprint
 from handlers import errors
 
 
@@ -21,13 +28,16 @@ app.secret_key = os.getenv('SECRET_KEY')
 
 # Initialize Flask-Login
 login_manager = LoginManager()
-# Configure the application to use Flask-Login for managing user sessions
+# Configure the application to use Flask-Login
 login_manager.init_app(app)
-# Configure the login view (the view function that handles logins)
+# Configure the login view to be the 'login' route
 login_manager.login_view = 'login'
 
 # Register the 'errors' Blueprint
 app.register_blueprint(errors)
+
+# Configure the remember cookie name
+app.config['REMEMBER_COOKIE_NAME'] = 'remember_token'
 
 
 # Define a function to load a user from their user_id
@@ -40,10 +50,10 @@ def load_user(user_id):
     # Get a cursor for executing SQL queries on the database.
     cursor = data_base.cursor
 
-    # Execute a SQL query to select a user from the 'users' table.
+    # Execute a query to select a user from the 'users' table.
     cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
 
-    # Fetch the first (and only) row of the result, which should contain user data.
+    # Fetch the first (and only) row of the result.
     user_data = cursor.fetchone()
 
     # Close the database connection to release resources.
@@ -56,7 +66,7 @@ def load_user(user_id):
         # Return the User object representing the logged-in user.
         return user
     else:
-        # If no user data is found, return None to indicate no authenticated user.
+        # If no user data is found, return None.
         return None
 
 
@@ -64,6 +74,7 @@ def load_user(user_id):
 @app.route('/')
 def index():
     """Rendering landing page."""
+    # Render the 'index.html' template.
     return render_template('index.html')
 
 
@@ -78,7 +89,7 @@ def home():
         # Get a cursor for executing SQL queries on the database.
         cursor = data_base.cursor
 
-        # Execute a SQL query to select all students' data from the 'students' table.
+        # Execute a query to select all students' data.
         cursor.execute("SELECT * FROM students;")
 
         # Fetch all rows of the result, which represent student records.
@@ -95,7 +106,7 @@ def home():
             # Ensure that the database connection is closed in all cases.
             data_base.close()
 
-    # Render the 'home.html' template even if there's an error.
+    # Render the 'home.html' template.
     return render_template('home.html')
 
 
@@ -109,10 +120,10 @@ def info():
         # Get a cursor for executing SQL queries on the database.
         cursor = data_base.cursor
 
-        # Execute a SQL query to select all students' data from the 'students' table.
+        # Execute a SQL query to select all students' data
         cursor.execute("SELECT * FROM students;")
 
-        # Fetch all rows of the result, which represent student records.
+        # Fetch all rows of the result
         students = cursor.fetchall()
 
     except Error as mysql_error:
@@ -123,7 +134,7 @@ def info():
             # Ensure that the database connection is closed in all cases.
             data_base.close()
 
-    # Render the 'home.html' template even if there's an error.
+    # Render the 'students information.html' template.
     return render_template('info.html', students=students)
 
 
@@ -131,11 +142,13 @@ def info():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Rendering login page."""
+    # If the user is already logged in
     if current_user.is_authenticated:
-        # If the user is already logged in, redirect them to the home page
+        # Redirect them to the home page
         return redirect(url_for('home'))
+    # Check if the HTTP request method is POST
     if request.method == 'POST':
-        # Check if the HTTP request method is POST (form submission)
+        # Get the username and password from the form
         username = request.form['username']
         password = request.form['password']
 
@@ -159,7 +172,7 @@ def login():
                     user_obj = User(user_id=user_data['id'])
 
                     # Log in the user using Flask-Login.
-                    login_user(user_obj)
+                    login_user(user_obj, remember=False)
 
                     # Flash a success message.
                     flash('Login successful!', 'success')
@@ -191,9 +204,9 @@ def login():
 @login_required
 def add_student():
     """ Rendering the add student page. """
-    # Check if the user is logged in (the 'username' is in the session)
+    # Check if the user is logged in
     if current_user.is_authenticated:
-        # Check if the HTTP request method is POST (form submission)
+        # Check if the HTTP request method is POST
         if request.method == 'POST':
 
             # Get form data
@@ -251,7 +264,7 @@ def add_student():
             # Redirect to the student information page
             return redirect(url_for('home'))
 
-        # If the request method is GET (initial page load), render the add student form
+        # If the request method is GET, render the add student form
         return render_template('add_student.html')
 
 
@@ -302,6 +315,7 @@ def edit(student_id):
             cursor = data_base.cursor
             # Get update query
             update_query = "UPDATE students SET Name = %s, PhoneNumber = %s, Email = %s "
+            # Get id query
             id_query = "WHERE ID = %s"
 
             # define the data to be inserted
@@ -322,13 +336,13 @@ def edit(student_id):
             # Redirect back to the info page
             return redirect(url_for('home'))
 
-        # If it's a GET request, fetch the student data and display the edit form
-        data_base = Database()
         # Create a new Database instance to connect to the MySQL database.
-        cursor = data_base.cursor
+        data_base = Database()
         # Get a cursor for executing SQL queries on the database.
+        cursor = data_base.cursor
+        # Execute a SQL query to select a student from the 'students' table.
         cursor.execute("SELECT * FROM students WHERE ID = %s", (student_id,))
-        # Fetch the first (and only) row of the result, which should contain student data.
+        # Fetch the first (and only) row of the result.
         student = cursor.fetchone()
         # Close the database connection to release resources.
         data_base.close()
@@ -341,29 +355,33 @@ def edit(student_id):
 @login_required
 def delete(student_id):
     """ Deletes students. """
-    # Check if the user is logged in (the 'username' is in the session)
+    # Check if the user is logged in
     if current_user.is_authenticated:
 
         # Create a new Database instance to connect to the MySQL database.
         data_base = Database()
         # Get a cursor for executing SQL queries on the database.
         cursor = data_base.cursor
-        # Execute a SQL query to select a student from the 'students' table based on their 'id'.
+        # Execute a SQL query to select a student from the 'students' table.
         cursor.execute("SELECT * FROM students WHERE ID = %s", (student_id,))
-        # Fetch the first (and only) row of the result, which should contain student data.
+        # Fetch the first (and only) row of the result.
         student_data = cursor.fetchone()
         # If student data is found
         if student_data:
 
             # Insert the student data about to be deleted into 'archived_students' table
+
+            # Create the INSERT query
             insert_query = "INSERT INTO archived_students (name, phoneNumber, email)"
+            # Create the VALUES query
             values_query = "VALUES (%s, %s, %s)"
+            # Define the data to be inserted
             student_info = (
                 student_data['Name'], student_data['phoneNumber'], student_data['Email'])
             # Complete the insertion execution to 'archived_students'
             cursor.execute(insert_query + values_query, student_info)
 
-            # Now, Delete the student record from the 'students' table
+            # Delete the student record from the 'students' table
             delete_query = "DELETE FROM students WHERE ID = %s"
             # Execute the DELETE query
             cursor.execute(delete_query, (student_id,))
@@ -419,8 +437,11 @@ def logout():
     if current_user.is_authenticated:
         # Log the logout event
         logout_user()
-    # Redirect to the landing page
-    return redirect(url_for('info'))
+        # Send a logout success message
+        response = make_response("You are logged out")
+        # Delete the remember cookie
+        response.delete_cookie("remember_token")
+    return redirect(url_for('login'))
 
 
 if __name__ == '__main__':
