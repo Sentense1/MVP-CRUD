@@ -348,7 +348,11 @@ h1 {
     cursor: pointer; /* Change cursor to a pointer on hover */
 }
 
-
+.arch-h1 {
+    font-size: 24px; /* Set the font size for h1 headings */
+    margin-bottom: 20px; /* Add margin at the bottom of h1 headings */
+    text-align: center /* Center-align text in the main content */;
+}
 
 .arch-table {
     width: 100%; /* Set table width to 100% */
@@ -492,4 +496,10 @@ h1 {
 .about-a:hover {
     text-decoration: underline; /* Add underlines to anchor links on hover */
     color: blue; /* Change the text color of anchor links on hover to blue */
+}
+
+.error {
+    font-size: 60px; /* Set the font size for h1 headings */
+    margin-top: 100px;
+    text-align: center /* Center-align text in the main content */;
 }
