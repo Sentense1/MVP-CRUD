@@ -377,7 +377,7 @@ def delete(student_id):
             values_query = "VALUES (%s, %s, %s)"
             # Define the data to be inserted
             student_info = (
-                student_data['Name'], student_data['phoneNumber'], student_data['Email'])
+                student_data['Name'], student_data['PhoneNumber'], student_data['Email'])
             # Complete the insertion execution to 'archived_students'
             cursor.execute(insert_query + values_query, student_info)
 
