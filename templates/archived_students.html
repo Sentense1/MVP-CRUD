@@ -23,7 +23,7 @@
 </header>
 
 <main>
-    <h1>Archived Students</h1>
+    <h1 class="arch-h1">Archived Students</h1>
 
     <table class="arch-table">
         <tr>
@@ -35,7 +35,7 @@
 
         {% for archived_student in archived_students %}
             <tr>
-                <th class="arch-th">{{ archived_student['id'] }}</th>
+                <th class="arch-th">{{ archived_student['ID'] }}</th>
                 <th class="arch-th">{{ archived_student['name'] }}</th>
                 <th class="arch-th">{{ archived_student['phoneNumber'] }}</th>
                 <th class="arch-th">{{ archived_student['email'] }}</th>
