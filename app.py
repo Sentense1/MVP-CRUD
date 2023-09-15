@@ -10,8 +10,6 @@ from flask_login import LoginManager, login_required, login_user, logout_user, c
 from dotenv import load_dotenv
 # Import the 'Error' class, for handling MySQL errors.
 from mysql.connector import Error
-# Import the 'datetime' class, for handling dates and times.
-from datetime import datetime
 # Import the 'Database' and 'user' class.
 from model import Database, User
 # Import the 'errors' Blueprint
