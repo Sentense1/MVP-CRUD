@@ -31,14 +31,16 @@
             <th class="arch-th">Name</th>
             <th class="arch-th">Phone Number</th>
             <th class="arch-th">Email</th>
+            <th class="arch-th">Archived Time</th>
         </tr>
 
         {% for archived_student in archived_students %}
             <tr>
-                <th class="arch-th">{{ archived_student['ID'] }}</th>
-                <th class="arch-th">{{ archived_student['name'] }}</th>
-                <th class="arch-th">{{ archived_student['phoneNumber'] }}</th>
-                <th class="arch-th">{{ archived_student['email'] }}</th>
+                <th class="arch-th">{{ archived_student[0] }}</th>
+                <th class="arch-th">{{ archived_student[1] }}</th>
+                <th class="arch-th">{{ archived_student[2] }}</th>
+                <th class="arch-th">{{ archived_student[3] }}</th>
+                <th class="arch-th">{{ archived_student[4] }}</th>
             </tr>
         {% endfor %}
     </table>

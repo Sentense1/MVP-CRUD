@@ -28,13 +28,13 @@
     <h1 class="edit-h1">Edit Student Information</h1>
     <form  method="POST" action="">
         <label class="edit-label" for="name">Name:</label>
-        <input class="edit-input" type="text" id="name" name="name" value="{{ student.Name }}" required>
+        <input class="edit-input" type="text" id="name" name="name" value="{{ student[1] }}" required>
         
         <label class="edit-label" for="phoneNumber">Phone Number:</label>
-        <input class="edit-input" type="text" id="phoneNumber" name="phoneNumber" value="{{ student.PhoneNumber }}" required>
+        <input class="edit-input" type="text" id="phoneNumber" name="phoneNumber" value="{{ student[2] }}" required>
         
         <label class="edit-label" for="email">Email:</label>
-        <input class="edit-input" type="email" id="email" name="email" value="{{ student.Email }}" required>
+        <input class="edit-input" type="email" id="email" name="email" value="{{ student[3] }}" required>
 
         <button class="edit-button" type="submit">Update Student</button>
     </form>
