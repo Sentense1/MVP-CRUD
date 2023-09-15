@@ -10,6 +10,8 @@ from flask_login import LoginManager, login_required, login_user, logout_user, c
 from dotenv import load_dotenv
 # Import the 'Error' class, for handling MySQL errors.
 from mysql.connector import Error
+# Import the 'datetime' class, for handling dates and times.
+from datetime import datetime
 # Import the 'Database' and 'user' class.
 from model import Database, User
 # Import the 'errors' Blueprint
@@ -62,7 +64,7 @@ def load_user(user_id):
     # If user data is found in the database:
     if user_data:
         # Create a User object representing the logged-in user
-        user = User(user_id=user_data['id'])
+        user = User(user_id=user_data[0])
         # Return the User object representing the logged-in user.
         return user
     else:
@@ -166,10 +168,10 @@ def login():
 
             # Verify the provided password against the hashed password stored in the database.
             if user_data:
-                if User.verify_password(user_data['password'], password):
+                if User.verify_password(user_data[2], password):
 
                     # Create a User object representing the logged-in user
-                    user_obj = User(user_id=user_data['id'])
+                    user_obj = User(user_id=user_data[0])
 
                     # Log in the user using Flask-Login.
                     login_user(user_obj, remember=False)
@@ -244,7 +246,8 @@ def add_student():
             # Create a cursor
             cursor = data_base.cursor
             # Create the INSERT query
-            insert_query = "INSERT INTO students (Name, PhoneNumber, Email)"
+            insert_query = "INSERT INTO students (name, phonenumber, email)"
+
             # Create the VALUES query
             values_query = "VALUES (%s, %s, %s)"
             # Execute the INSERT query
@@ -314,9 +317,9 @@ def edit(student_id):
             # Get a cursor for executing SQL queries on the database.
             cursor = data_base.cursor
             # Get update query
-            update_query = "UPDATE students SET Name = %s, PhoneNumber = %s, Email = %s "
+            update_query = "UPDATE students SET name = %s, phonenumber = %s, email = %s "
             # Get id query
-            id_query = "WHERE ID = %s"
+            id_query = "WHERE id = %s"
 
             # define the data to be inserted
             form_data = (name, phone_number, email, student_id)
@@ -341,7 +344,7 @@ def edit(student_id):
         # Get a cursor for executing SQL queries on the database.
         cursor = data_base.cursor
         # Execute a SQL query to select a student from the 'students' table.
-        cursor.execute("SELECT * FROM students WHERE ID = %s", (student_id,))
+        cursor.execute("SELECT * FROM students WHERE id = %s", (student_id,))
         # Fetch the first (and only) row of the result.
         student = cursor.fetchone()
         # Close the database connection to release resources.
@@ -363,7 +366,7 @@ def delete(student_id):
         # Get a cursor for executing SQL queries on the database.
         cursor = data_base.cursor
         # Execute a SQL query to select a student from the 'students' table.
-        cursor.execute("SELECT * FROM students WHERE ID = %s", (student_id,))
+        cursor.execute("SELECT * FROM students WHERE id = %s", (student_id,))
         # Fetch the first (and only) row of the result.
         student_data = cursor.fetchone()
         # If student data is found
@@ -372,17 +375,17 @@ def delete(student_id):
             # Insert the student data about to be deleted into 'archived_students' table
 
             # Create the INSERT query
-            insert_query = "INSERT INTO archived_students (name, phoneNumber, email)"
+            insert_query = "INSERT INTO archived_students (name, phonenumber, email)"
             # Create the VALUES query
             values_query = "VALUES (%s, %s, %s)"
             # Define the data to be inserted
             student_info = (
-                student_data['Name'], student_data['PhoneNumber'], student_data['Email'])
+                student_data[1], student_data[2], student_data[3])
             # Complete the insertion execution to 'archived_students'
             cursor.execute(insert_query + values_query, student_info)
 
             # Delete the student record from the 'students' table
-            delete_query = "DELETE FROM students WHERE ID = %s"
+            delete_query = "DELETE FROM students WHERE id = %s"
             # Execute the DELETE query
             cursor.execute(delete_query, (student_id,))
 
