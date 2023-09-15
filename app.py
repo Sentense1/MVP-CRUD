@@ -8,8 +8,8 @@ from flask import Flask, render_template, flash, request, redirect, url_for, mak
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 # Import the 'load_dotenv' func for loading environment variables from a '.env' file.
 from dotenv import load_dotenv
-# Import the 'Error' class, for handling MySQL errors.
-from mysql.connector import Error
+# Import the 'Error' class, for handling postgresql errors.
+from psycopg2 import Error
 # Import the 'Database' and 'user' class.
 from model import Database, User
 # Import the 'errors' Blueprint
@@ -98,9 +98,9 @@ def home():
         # Render the 'home.html' template and pass the 'students' data to the template.
         return render_template('home.html', students=students)
 
-    except Error as mysql_error:
+    except Error as pgsql_error:
         # Handle MySQL-related exceptions
-        print("MySQL Error:", str(mysql_error))
+        print("MySQL Error:", str(pgsql_error))
     finally:
         if data_base:
             # Ensure that the database connection is closed in all cases.
@@ -126,9 +126,9 @@ def info():
         # Fetch all rows of the result
         students = cursor.fetchall()
 
-    except Error as mysql_error:
+    except Error as pgsql_error:
         # Handle MySQL-related exceptions
-        print("MySQL Error:", str(mysql_error))
+        print("MySQL Error:", str(pgsql_error))
     finally:
         if data_base:
             # Ensure that the database connection is closed in all cases.
@@ -191,9 +191,9 @@ def login():
             # Close the database connection.
             data_base.close()
 
-        except Error as mysql_error:
+        except Error as pgsql_error:
             # Handle MySQL-related exceptions
-            print("MySQL Error:", str(mysql_error))
+            print("MySQL Error:", str(pgsql_error))
 
     # Render the 'login.html' template if the request method is GET or if login fails.
     return render_template('login.html')
